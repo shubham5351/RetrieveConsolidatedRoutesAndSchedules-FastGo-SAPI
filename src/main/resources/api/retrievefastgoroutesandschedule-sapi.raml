@@ -1,0 +1,68 @@
+#%RAML 1.0
+title: RetrieveFastGoRoutesAndSchedule-SAPI
+description: This api will fetch routes and scheules for fast go transpots
+
+traits:
+  transactionid: !include /libraries/common/traits/header-transactionid.raml
+  departurelocationCode: !include /libraries/common/traits/queryParams-departureLocationCode.raml
+  destinationLocationCode: !include /libraries/common/traits/queryParams-destinationLocationCode.raml
+
+types:
+  routes200response: !include /libraries/routes/dataTypes/routes-200Response-dataType.raml
+  schedules200response: !include /libraries/schedules/dataTypes/schedules-200Response-dataType.raml
+  common-error-type: !include /libraries/common/dataTypes/commonError-dataTypes.raml
+
+/{transportType}:
+  /{transportCompany}:
+    /routes:
+      get:
+        is:
+          - transactionid
+        responses:
+          200:
+            body:
+              application/json:
+                type: routes200response
+                example: !include /libraries/routes/examples/getRoutesExample.json  
+          400:
+            body:
+              application/json:
+                type: common-error-type
+                example: !include /libraries/common/examples/400ResponseExample.json
+          404:
+            body:
+              application/json:
+                type: common-error-type
+                example: !include /libraries/common/examples/400ResponseExample.json
+          500:
+            body:
+              application/json:
+                type: common-error-type
+                example: !include /libraries/common/examples/500ResponseExample.json               
+    /schedules:
+      get:
+        is:
+          - transactionid
+          - departurelocationCode
+          - destinationLocationCode
+        responses:
+          200:
+            body:
+              application/json:
+                type: schedules200response
+                example: !include /libraries/schedules/examples/getSchedulesExample.json
+          400:
+            body:
+              application/json:
+                type: common-error-type
+                example: !include /libraries/common/examples/400ResponseExample.json
+          404:
+            body:
+              application/json:
+                type: common-error-type
+                example: !include /libraries/common/examples/404ResponseExample.json
+          500:
+            body:
+              application/json:
+                type: common-error-type
+                example: !include /libraries/common/examples/500ResponseExample.json

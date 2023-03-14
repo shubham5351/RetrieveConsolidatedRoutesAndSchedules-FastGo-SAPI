@@ -1,0 +1,14 @@
+[
+  {
+    "departureDateTime": "2022-02-23T20:45:30",
+    "fromLocation": "BEN-SG",
+    "toLocation": "PUN-SG",
+    "availableSeats": 50
+  },
+  {
+    "departureDateTime": "2022-02-23T20:45:30",
+    "fromLocation": "BEN-SG",
+    "toLocation": "KLG-MY",
+    "availableSeats": 30
+  }
+]

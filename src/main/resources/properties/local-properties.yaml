@@ -1,0 +1,9 @@
+http:
+  listener:
+    host: "localhost"
+    port: "9084"
+  requester:
+    host: "localhost"
+    port: "9082"
+    routesPath: "/fastGoCall/routes/"
+    schedulesPath: "/fastGoCall/schedules/"
